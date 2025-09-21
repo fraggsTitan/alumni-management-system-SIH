@@ -24,7 +24,7 @@
             color: #1a1a1a;
             overflow-x: hidden;
             min-height: 100vh;
-            visibility: visible !important; /* Ensure page stays visible */
+            visibility: visible !important;
         }
         .glass-card {
             background: #ffffff;
@@ -49,7 +49,7 @@
             }
         }
         .animate-fadeInUp {
-            animation: fadeInUp 0.8s ease-out forwards; /* Ensure animation completes */
+            animation: fadeInUp 0.8s ease-out forwards;
         }
         .delay-100 { animation-delay: 100ms; }
         .delay-200 { animation-delay: 200ms; }
@@ -59,7 +59,6 @@
         .delay-600 { animation-delay: 600ms; }
         .delay-700 { animation-delay: 700ms; }
         .delay-800 { animation-delay: 800ms; }
-        /* Rainbow Gradient Header */
         .rainbow-header {
             background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4, #ffeaa7, #6c5ce7, #fd79a8, #e17055);
             background-size: 300% 300%;
@@ -72,7 +71,6 @@
             0%, 100% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
         }
-        /* Scrollbar styling */
         ::-webkit-scrollbar {
             width: 12px;
             height: 12px;
@@ -88,7 +86,6 @@
         ::-webkit-scrollbar-thumb:hover {
             background: linear-gradient(135deg, #e84393, #fd79a8);
         }
-        /* Filter button styles */
         .filter-btn {
             padding: 12px 20px;
             font-weight: 600;
@@ -105,12 +102,62 @@
             background: linear-gradient(135deg, #a29bfe, #6c5ce7);
             color: white;
         }
+        /* Sidebar Styles */
+        .sidebar {
+            width: 250px;
+            background: #ffffff;
+            padding: 20px 0;
+            border-right: 1px solid #e9ecef;
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            left: 0;
+        }
+        .sidebar h2 {
+            color: #6c5ce7;
+            font-size: 1.5rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .sidebar .nav-item {
+            display: flex;
+            align-items: center;
+            padding: 10px 20px;
+            color: #636e72;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border-radius: 8px;
+        }
+        .sidebar .nav-item.active {
+            background: linear-gradient(135deg, #6c5ce7, #74b9ff);
+            color: white;
+        }
+        .sidebar .nav-item:hover {
+            background: #f1f3f4;
+            color: #2d3436;
+        }
+        .sidebar .nav-item i {
+            margin-right: 10px;
+            width: 20px;
+            height: 20px;
+        }
     </style>
 </head>
 <body>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <h2>AlumniSys</h2>
+        <div class="nav-item"><i data-lucide="home" class="w-5 h-5"></i> Dashboard</div>
+        <div class="nav-item"><i data-lucide="users" class="w-5 h-5"></i> Friends</div>
+        <div class="nav-item"><i data-lucide="calendar" class="w-5 h-5"></i> Events</div>
+        <div class="nav-item active"><i data-lucide="mail" class="w-5 h-5"></i> Messages</div>
+        <div class="nav-item"><i data-lucide="settings" class="w-5 h-5"></i> Settings</div>
+        <div class="nav-item"><i data-lucide="log-out" class="w-5 h-5"></i> Logout</div>
+    </div>
 
-    <div class="container mx-auto p-4 sm:p-6 lg:p-8">
-
+    <!-- Main Content -->
+    <div class="container mx-auto p-4 sm:p-6 lg:p-8 ml-[250px]">
         <!-- Header -->
         <header class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-8 animate-fadeInUp">
             <div>
@@ -248,13 +295,9 @@
     </div>
 
     <script>
-        // Ensure DOM is fully loaded before running scripts
         document.addEventListener('DOMContentLoaded', () => {
             try {
-                // Initialize Lucide Icons
                 lucide.createIcons();
-                
-                // Filter Button Logic
                 const filterBtns = document.querySelectorAll('.filter-btn');
                 filterBtns.forEach(btn => {
                     btn.addEventListener('click', () => {
@@ -268,34 +311,23 @@
                         btn.style.color = 'white';
                     });
                 });
-
-                // Set initial opacity for animations
                 document.querySelectorAll('.animate-fadeInUp').forEach(el => {
                     el.style.opacity = '0';
                 });
-
-                // Log to confirm page is loaded and stays active
                 console.log('Page loaded successfully at', new Date().toISOString());
                 setInterval(() => {
                     console.log('Page still active at', new Date().toISOString());
-                }, 5000); // Log every 5 seconds to verify page persistence
+                }, 5000);
             } catch (error) {
                 console.error('Error in page initialization:', error);
             }
         });
-
-        // Prevent page from being hidden
         window.addEventListener('load', () => {
             document.body.style.display = 'block';
             document.body.style.visibility = 'visible';
         });
-
-        // Prevent accidental navigation or reload
         window.addEventListener('beforeunload', (event) => {
             console.log('Preventing page unload');
-            // Uncomment below if you want to prompt user before leaving
-            // event.preventDefault();
-            // event.returnValue = '';
         });
     </script>
 </body>
