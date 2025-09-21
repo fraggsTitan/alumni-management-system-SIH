@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Choose Your Impact - Alumni Giving Platform</title>
     
-    <!-- Tailwind CSS with fallback -->
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- Google Fonts: Inter with fallback -->
+    <!-- Google Fonts: Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -31,15 +31,14 @@
         .container {
             display: flex;
             min-height: 100vh;
-            position: relative;
             max-width: 1400px;
             margin: 0 auto;
+            width: 100%;
         }
         .sidebar {
             width: 260px;
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
             border-right: 1px solid rgba(255, 255, 255, 0.2);
             display: flex;
             flex-direction: column;
@@ -79,6 +78,11 @@
             border-radius: 10px;
             color: #6b7280;
         }
+        .sidebar nav ul li i, .sidebar nav ul li svg {
+            width: 20px;
+            height: 20px;
+            vertical-align: middle;
+        }
         .sidebar nav ul li.active {
             background: linear-gradient(135deg, #667eea, #764ba2);
             color: white;
@@ -90,24 +94,21 @@
             color: #667eea;
             transform: translateX(4px);
         }
-        .sidebar nav ul li i {
-            font-size: 1rem;
-        }
         .main-content {
             flex: 1;
-            padding: 20px 24px;
+            padding: 24px;
             display: flex;
             flex-direction: column;
-            gap: 20px;
+            gap: 24px;
             background: rgba(248, 250, 252, 0.8);
             backdrop-filter: blur(10px);
-            width: calc(100% - 260px);
         }
         .topbar {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 12px;
+            gap: 16px;
+            margin-bottom: 16px;
         }
         .search-bar {
             display: flex;
@@ -118,7 +119,8 @@
             box-shadow: 0 3px 15px rgba(0, 0, 0, 0.06);
             border: 1px solid rgba(255, 255, 255, 0.3);
             backdrop-filter: blur(10px);
-            min-width: 280px;
+            flex: 1;
+            max-width: 400px;
         }
         .search-bar input {
             border: none;
@@ -268,7 +270,7 @@
             padding: 40px 24px;
             text-align: center;
             border-radius: 16px;
-            margin-bottom: 20px;
+            margin-bottom: 24px;
         }
         .hero h1 {
             font-size: 2rem;
@@ -302,8 +304,8 @@
         .projects-grid, .urgent-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 16px;
-            padding: 0 10px;
+            gap: 20px;
+            padding: 0 16px;
         }
         .project-card, .urgent-card {
             transition: all 0.3s ease;
@@ -363,6 +365,7 @@
         }
         .project-stat {
             text-align: center;
+            flex: 1;
         }
         .stat-value {
             font-size: 0.9rem;
@@ -413,8 +416,8 @@
             box-shadow: 0 8px 20px rgba(102, 126, 234, 0.2);
         }
         .urgent-projects {
-            padding: 20px 0;
-            margin: 20px 0;
+            padding: 24px;
+            margin: 24px 0;
             border-radius: 16px;
         }
         .urgent-header {
@@ -459,6 +462,7 @@
         }
         .urgent-stat {
             text-align: center;
+            flex: 1;
         }
         .urgent-stat-value {
             font-size: 0.9rem;
@@ -489,48 +493,72 @@
         /* Responsive Design */
         @media (max-width: 1024px) {
             .sidebar {
-                width: 200px;
+                width: 220px;
             }
             .main-content {
-                width: calc(100% - 200px);
-                padding: 16px 20px;
+                padding: 20px;
             }
             .projects-grid, .urgent-grid {
-                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+                gap: 16px;
+                padding: 0 12px;
             }
         }
         @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
             .sidebar {
                 display: none;
             }
             .main-content {
                 width: 100%;
-                padding: 16px 10px;
+                padding: 16px;
             }
             .topbar {
                 flex-direction: column;
+                align-items: stretch;
                 gap: 12px;
             }
             .search-bar {
-                width: 100%;
-                min-width: 0;
+                max-width: none;
+            }
+            .topbar-right {
+                justify-content: center;
             }
             .hero {
-                padding: 30px 15px;
+                padding: 30px 16px;
             }
             .hero h1 {
-                font-size: 1.5rem;
+                font-size: 1.75rem;
             }
             .hero-subtitle {
                 font-size: 0.9rem;
             }
             .projects-grid, .urgent-grid {
                 grid-template-columns: 1fr;
-                padding: 0 5px;
-                gap: 12px;
+                padding: 0 8px;
+                gap: 16px;
             }
             .project-image {
                 height: 140px;
+            }
+        }
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 1.5rem;
+            }
+            .hero-subtitle {
+                font-size: 0.85rem;
+            }
+            .section-header h2 {
+                font-size: 1.5rem;
+            }
+            .section-header p {
+                font-size: 0.85rem;
+            }
+            .project-card, .urgent-card {
+                padding: 12px;
             }
         }
     </style>
@@ -541,13 +569,13 @@
             <div class="logo">AlumniSys</div>
             <nav>
                 <ul>
-                    <li><i data-lucide="home" class="w-5 h-5"></i> Dashboard</li>
-                    <li><i data-lucide="users" class="w-5 h-5"></i> Friends</li>
-                    <li><i data-lucide="calendar" class="w-5 h-5"></i> Events</li>
-                    <li><i data-lucide="mail" class="w-5 h-5"></i> Messages</li>
-                    <li><i data-lucide="settings" class="w-5 h-5"></i> Settings</li>
-                    <li><i data-lucide="log-out" class="w-5 h-5"></i> Logout</li>
-                    <li class="active"><i data-lucide="heart" class="w-5 h-5"></i> Giving</li>
+                    <li><i data-lucide="home"></i> Dashboard</li>
+                    <li><i data-lucide="users"></i> Friends</li>
+                    <li><i data-lucide="calendar"></i> Events</li>
+                    <li><i data-lucide="mail"></i> Messages</li>
+                    <li><i data-lucide="settings"></i> Settings</li>
+                    <li><i data-lucide="log-out"></i> Logout</li>
+                    <li class="active"><i data-lucide="heart"></i> Giving</li>
                 </ul>
             </nav>
         </aside>
@@ -574,227 +602,223 @@
 
             <!-- Hero Section -->
             <section class="hero animate-fadeInUp">
-                <div class="container">
-                    <h1 class="rainbow-header text-4xl font-bold tracking-tight">Choose Where to Make an Impact</h1>
-                    <p class="hero-subtitle text-white/80 text-lg mt-2">Select a project that resonates with you and help us create lasting change through your generous support</p>
-                </div>
+                <h1 class="rainbow-header text-4xl font-bold tracking-tight">Choose Where to Make an Impact</h1>
+                <p class="hero-subtitle text-white/80 text-lg mt-2">Select a project that resonates with you and help us create lasting change through your generous support</p>
             </section>
 
             <!-- Projects Grid -->
             <section class="projects-section animate-fadeInUp delay-100">
-                <div class="container">
-                    <div class="section-header">
-                        <h2 class="text-3xl font-bold text-gray-800">Featured Initiatives</h2>
-                        <p class="text-gray-500 text-base mt-2">Browse through our current fundraising campaigns and select one to support</p>
+                <div class="section-header">
+                    <h2 class="text-3xl font-bold text-gray-800">Featured Initiatives</h2>
+                    <p class="text-gray-500 text-base mt-2">Browse through our current fundraising campaigns and select one to support</p>
+                </div>
+                <div class="projects-grid">
+                    <!-- Project 1 -->
+                    <div class="project-card glass-card rounded-2xl overflow-hidden" data-project="scholarships">
+                        <div class="project-image">
+                            <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Student Scholarships" class="transition-transform duration-500 hover:scale-105">
+                            <div class="project-overlay">
+                                <div class="project-category">Education</div>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">Student Scholarship Fund</h3>
+                            <p class="project-description">Provide financial assistance to deserving students who demonstrate academic excellence and financial need.</p>
+                            <div class="project-stats">
+                                <div class="project-stat">
+                                    <div class="stat-value">83%</div>
+                                    <div class="stat-label">Funded</div>
+                                </div>
+                                <div class="project-stat">
+                                    <div class="stat-value">$847K</div>
+                                    <div class="stat-label">Raised</div>
+                                </div>
+                                <div class="project-stat">
+                                    <div class="stat-value">27</div>
+                                    <div class="stat-label">Days</div>
+                                </div>
+                            </div>
+                            <div class="progress-container">
+                                <div class="progress-bar" style="width: 83%"></div>
+                            </div>
+                            <div class="project-footer">
+                                <div class="project-goal">Goal: <span>$1,020,000</span></div>
+                                <button class="select-project-btn">Select & Donate</button>
+                            </div>
+                        </div>
                     </div>
-                    <div class="projects-grid">
-                        <!-- Project 1 -->
-                        <div class="project-card glass-card rounded-2xl overflow-hidden">
-                            <div class="project-image h-40 overflow-hidden">
-                                <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Student Scholarships" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105">
-                                <div class="project-overlay absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end p-2">
-                                    <div class="project-category bg-indigo-600 text-white px-1.5 py-0.5 rounded-full text-xs font-semibold">Education</div>
-                                </div>
-                            </div>
-                            <div class="project-content p-3">
-                                <h3 class="project-title text-base font-bold text-gray-900">Student Scholarship Fund</h3>
-                                <p class="project-description text-gray-600 mt-1 text-xs">Provide financial assistance to deserving students who demonstrate academic excellence and financial need.</p>
-                                <div class="project-stats flex justify-between mt-1">
-                                    <div class="project-stat text-center">
-                                        <div class="stat-value text-sm font-bold text-indigo-600">83%</div>
-                                        <div class="stat-label text-xs text-gray-500">Funded</div>
-                                    </div>
-                                    <div class="project-stat text-center">
-                                        <div class="stat-value text-sm font-bold text-indigo-600">$847K</div>
-                                        <div class="stat-label text-xs text-gray-500">Raised</div>
-                                    </div>
-                                    <div class="project-stat text-center">
-                                        <div class="stat-value text-sm font-bold text-indigo-600">27</div>
-                                        <div class="stat-label text-xs text-gray-500">Days</div>
-                                    </div>
-                                </div>
-                                <div class="progress-container h-1 bg-gray-200 rounded-full mt-1">
-                                    <div class="progress-bar bg-gradient-to-r from-indigo-600 to-purple-600 h-full rounded-full" style="width: 83%"></div>
-                                </div>
-                                <div class="project-footer flex justify-between items-center mt-1">
-                                    <div class="project-goal text-xs text-gray-500">Goal: <span class="font-bold text-gray-900">$1,020,000</span></div>
-                                    <button class="select-project-btn bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-2 py-1 rounded-full text-xs font-semibold hover:shadow-lg transition-all duration-300" data-project="scholarships">Select & Donate</button>
-                                </div>
+
+                    <!-- Project 2 -->
+                    <div class="project-card glass-card rounded-2xl overflow-hidden" data-project="research">
+                        <div class="project-image">
+                            <img src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Research Innovation" class="transition-transform duration-500 hover:scale-105">
+                            <div class="project-overlay">
+                                <div class="project-category">Research</div>
                             </div>
                         </div>
-
-                        <!-- Project 2 -->
-                        <div class="project-card glass-card rounded-2xl overflow-hidden">
-                            <div class="project-image h-40 overflow-hidden">
-                                <img src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Research Innovation" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105">
-                                <div class="project-overlay absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end p-2">
-                                    <div class="project-category bg-indigo-600 text-white px-1.5 py-0.5 rounded-full text-xs font-semibold">Research</div>
+                        <div class="project-content">
+                            <h3 class="project-title">Research Innovation Center</h3>
+                            <p class="project-description">Support cutting-edge research in sustainable technology and provide resources for our brightest minds.</p>
+                            <div class="project-stats">
+                                <div class="project-stat">
+                                    <div class="stat-value">65%</div>
+                                    <div class="stat-label">Funded</div>
+                                </div>
+                                <div class="project-stat">
+                                    <div class="stat-value">$1.2M</div>
+                                    <div class="stat-label">Raised</div>
+                                </div>
+                                <div class="project-stat">
+                                    <div class="stat-value">45</div>
+                                    <div class="stat-label">Days</div>
                                 </div>
                             </div>
-                            <div class="project-content p-3">
-                                <h3 class="project-title text-base font-bold text-gray-900">Research Innovation Center</h3>
-                                <p class="project-description text-gray-600 mt-1 text-xs">Support cutting-edge research in sustainable technology and provide resources for our brightest minds.</p>
-                                <div class="project-stats flex justify-between mt-1">
-                                    <div class="project-stat text-center">
-                                        <div class="stat-value text-sm font-bold text-indigo-600">65%</div>
-                                        <div class="stat-label text-xs text-gray-500">Funded</div>
-                                    </div>
-                                    <div class="project-stat text-center">
-                                        <div class="stat-value text-sm font-bold text-indigo-600">$1.2M</div>
-                                        <div class="stat-label text-xs text-gray-500">Raised</div>
-                                    </div>
-                                    <div class="project-stat text-center">
-                                        <div class="stat-value text-sm font-bold text-indigo-600">45</div>
-                                        <div class="stat-label text-xs text-gray-500">Days</div>
-                                    </div>
-                                </div>
-                                <div class="progress-container h-1 bg-gray-200 rounded-full mt-1">
-                                    <div class="progress-bar bg-gradient-to-r from-indigo-600 to-purple-600 h-full rounded-full" style="width: 65%"></div>
-                                </div>
-                                <div class="project-footer flex justify-between items-center mt-1">
-                                    <div class="project-goal text-xs text-gray-500">Goal: <span class="font-bold text-gray-900">$1,850,000</span></div>
-                                    <button class="select-project-btn bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-2 py-1 rounded-full text-xs font-semibold hover:shadow-lg transition-all duration-300" data-project="research">Select & Donate</button>
-                                </div>
+                            <div class="progress-container">
+                                <div class="progress-bar" style="width: 65%"></div>
+                            </div>
+                            <div class="project-footer">
+                                <div class="project-goal">Goal: <span>$1,850,000</span></div>
+                                <button class="select-project-btn">Select & Donate</button>
                             </div>
                         </div>
+                    </div>
 
-                        <!-- Project 3 -->
-                        <div class="project-card glass-card rounded-2xl overflow-hidden">
-                            <div class="project-image h-40 overflow-hidden">
-                                <img src="https://images.unsplash.com/photo-1507842217343-583bb7270b66?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Library Renovation" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105">
-                                <div class="project-overlay absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end p-2">
-                                    <div class="project-category bg-indigo-600 text-white px-1.5 py-0.5 rounded-full text-xs font-semibold">Infrastructure</div>
-                                </div>
-                            </div>
-                            <div class="project-content p-3">
-                                <h3 class="project-title text-base font-bold text-gray-900">Library Modernization Project</h3>
-                                <p class="project-description text-gray-600 mt-1 text-xs">Transform our main library into a state-of-the-art learning hub with digital resources and collaborative spaces.</p>
-                                <div class="project-stats flex justify-between mt-1">
-                                    <div class="project-stat text-center">
-                                        <div class="stat-value text-sm font-bold text-indigo-600">42%</div>
-                                        <div class="stat-label text-xs text-gray-500">Funded</div>
-                                    </div>
-                                    <div class="project-stat text-center">
-                                        <div class="stat-value text-sm font-bold text-indigo-600">$630K</div>
-                                        <div class="stat-label text-xs text-gray-500">Raised</div>
-                                    </div>
-                                    <div class="project-stat text-center">
-                                        <div class="stat-value text-sm font-bold text-indigo-600">18</div>
-                                        <div class="stat-label text-xs text-gray-500">Days</div>
-                                    </div>
-                                </div>
-                                <div class="progress-container h-1 bg-gray-200 rounded-full mt-1">
-                                    <div class="progress-bar bg-gradient-to-r from-indigo-600 to-purple-600 h-full rounded-full" style="width: 42%"></div>
-                                </div>
-                                <div class="project-footer flex justify-between items-center mt-1">
-                                    <div class="project-goal text-xs text-gray-500">Goal: <span class="font-bold text-gray-900">$1,500,000</span></div>
-                                    <button class="select-project-btn bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-2 py-1 rounded-full text-xs font-semibold hover:shadow-lg transition-all duration-300" data-project="library">Select & Donate</button>
-                                </div>
+                    <!-- Project 3 -->
+                    <div class="project-card glass-card rounded-2xl overflow-hidden" data-project="library">
+                        <div class="project-image">
+                            <img src="https://images.unsplash.com/photo-1507842217343-583bb7270b66?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Library Renovation" class="transition-transform duration-500 hover:scale-105">
+                            <div class="project-overlay">
+                                <div class="project-category">Infrastructure</div>
                             </div>
                         </div>
-
-                        <!-- Project 4 -->
-                        <div class="project-card glass-card rounded-2xl overflow-hidden">
-                            <div class="project-image h-40 overflow-hidden">
-                                <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Athletics Program" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105">
-                                <div class="project-overlay absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end p-2">
-                                    <div class="project-category bg-indigo-600 text-white px-1.5 py-0.5 rounded-full text-xs font-semibold">Athletics</div>
+                        <div class="project-content">
+                            <h3 class="project-title">Library Modernization Project</h3>
+                            <p class="project-description">Transform our main library into a state-of-the-art learning hub with digital resources and collaborative spaces.</p>
+                            <div class="project-stats">
+                                <div class="project-stat">
+                                    <div class="stat-value">42%</div>
+                                    <div class="stat-label">Funded</div>
+                                </div>
+                                <div class="project-stat">
+                                    <div class="stat-value">$630K</div>
+                                    <div class="stat-label">Raised</div>
+                                </div>
+                                <div class="project-stat">
+                                    <div class="stat-value">18</div>
+                                    <div class="stat-label">Days</div>
                                 </div>
                             </div>
-                            <div class="project-content p-3">
-                                <h3 class="project-title text-base font-bold text-gray-900">Athletics Excellence Program</h3>
-                                <p class="project-description text-gray-600 mt-1 text-xs">Enhance our sports facilities and support student-athletes with training resources and scholarship opportunities.</p>
-                                <div class="project-stats flex justify-between mt-1">
-                                    <div class="project-stat text-center">
-                                        <div class="stat-value text-sm font-bold text-indigo-600">78%</div>
-                                        <div class="stat-label text-xs text-gray-500">Funded</div>
-                                    </div>
-                                    <div class="project-stat text-center">
-                                        <div class="stat-value text-sm font-bold text-indigo-600">$585K</div>
-                                        <div class="stat-label text-xs text-gray-500">Raised</div>
-                                    </div>
-                                    <div class="project-stat text-center">
-                                        <div class="stat-value text-sm font-bold text-indigo-600">60</div>
-                                        <div class="stat-label text-xs text-gray-500">Days</div>
-                                    </div>
-                                </div>
-                                <div class="progress-container h-1 bg-gray-200 rounded-full mt-1">
-                                    <div class="progress-bar bg-gradient-to-r from-indigo-600 to-purple-600 h-full rounded-full" style="width: 78%"></div>
-                                </div>
-                                <div class="project-footer flex justify-between items-center mt-1">
-                                    <div class="project-goal text-xs text-gray-500">Goal: <span class="font-bold text-gray-900">$750,000</span></div>
-                                    <button class="select-project-btn bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-2 py-1 rounded-full text-xs font-semibold hover:shadow-lg transition-all duration-300" data-project="athletics">Select & Donate</button>
-                                </div>
+                            <div class="progress-container">
+                                <div class="progress-bar" style="width: 42%"></div>
+                            </div>
+                            <div class="project-footer">
+                                <div class="project-goal">Goal: <span>$1,500,000</span></div>
+                                <button class="select-project-btn">Select & Donate</button>
                             </div>
                         </div>
+                    </div>
 
-                        <!-- Project 5 -->
-                        <div class="project-card glass-card rounded-2xl overflow-hidden">
-                            <div class="project-image h-40 overflow-hidden">
-                                <img src="https://images.unsplash.com/photo-1567942712661-82b9b407abbf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Arts Center" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105">
-                                <div class="project-overlay absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end p-2">
-                                    <div class="project-category bg-indigo-600 text-white px-1.5 py-0.5 rounded-full text-xs font-semibold">Arts & Culture</div>
-                                </div>
-                            </div>
-                            <div class="project-content p-3">
-                                <h3 class="project-title text-base font-bold text-gray-900">Performing Arts Center</h3>
-                                <p class="project-description text-gray-600 mt-1 text-xs">Create a vibrant space for artistic expression with modern facilities for theater, music, and visual arts programs.</p>
-                                <div class="project-stats flex justify-between mt-1">
-                                    <div class="project-stat text-center">
-                                        <div class="stat-value text-sm font-bold text-indigo-600">35%</div>
-                                        <div class="stat-label text-xs text-gray-500">Funded</div>
-                                    </div>
-                                    <div class="project-stat text-center">
-                                        <div class="stat-value text-sm font-bold text-indigo-600">$875K</div>
-                                        <div class="stat-label text-xs text-gray-500">Raised</div>
-                                    </div>
-                                    <div class="project-stat text-center">
-                                        <div class="stat-value text-sm font-bold text-indigo-600">90</div>
-                                        <div class="stat-label text-xs text-gray-500">Days</div>
-                                    </div>
-                                </div>
-                                <div class="progress-container h-1 bg-gray-200 rounded-full mt-1">
-                                    <div class="progress-bar bg-gradient-to-r from-indigo-600 to-purple-600 h-full rounded-full" style="width: 35%"></div>
-                                </div>
-                                <div class="project-footer flex justify-between items-center mt-1">
-                                    <div class="project-goal text-xs text-gray-500">Goal: <span class="font-bold text-gray-900">$2,500,000</span></div>
-                                    <button class="select-project-btn bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-2 py-1 rounded-full text-xs font-semibold hover:shadow-lg transition-all duration-300" data-project="arts">Select & Donate</button>
-                                </div>
+                    <!-- Project 4 -->
+                    <div class="project-card glass-card rounded-2xl overflow-hidden" data-project="athletics">
+                        <div class="project-image">
+                            <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Athletics Program" class="transition-transform duration-500 hover:scale-105">
+                            <div class="project-overlay">
+                                <div class="project-category">Athletics</div>
                             </div>
                         </div>
-
-                        <!-- Project 6 -->
-                        <div class="project-card glass-card rounded-2xl overflow-hidden">
-                            <div class="project-image h-40 overflow-hidden">
-                                <img src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Sustainability Initiative" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105">
-                                <div class="project-overlay absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end p-2">
-                                    <div class="project-category bg-indigo-600 text-white px-1.5 py-0.5 rounded-full text-xs font-semibold">Sustainability</div>
+                        <div class="project-content">
+                            <h3 class="project-title">Athletics Excellence Program</h3>
+                            <p class="project-description">Enhance our sports facilities and support student-athletes with training resources and scholarship opportunities.</p>
+                            <div class="project-stats">
+                                <div class="project-stat">
+                                    <div class="stat-value">78%</div>
+                                    <div class="stat-label">Funded</div>
+                                </div>
+                                <div class="project-stat">
+                                    <div class="stat-value">$585K</div>
+                                    <div class="stat-label">Raised</div>
+                                </div>
+                                <div class="project-stat">
+                                    <div class="stat-value">60</div>
+                                    <div class="stat-label">Days</div>
                                 </div>
                             </div>
-                            <div class="project-content p-3">
-                                <h3 class="project-title text-base font-bold text-gray-900">Campus Green Initiative</h3>
-                                <p class="project-description text-gray-600 mt-1 text-xs">Fund solar panel installations, waste reduction programs, and sustainable infrastructure across campus.</p>
-                                <div class="project-stats flex justify-between mt-1">
-                                    <div class="project-stat text-center">
-                                        <div class="stat-value text-sm font-bold text-indigo-600">56%</div>
-                                        <div class="stat-label text-xs text-gray-500">Funded</div>
-                                    </div>
-                                    <div class="project-stat text-center">
-                                        <div class="stat-value text-sm font-bold text-indigo-600">$420K</div>
-                                        <div class="stat-label text-xs text-gray-500">Raised</div>
-                                    </div>
-                                    <div class="project-stat text-center">
-                                        <div class="stat-value text-sm font-bold text-indigo-600">30</div>
-                                        <div class="stat-label text-xs text-gray-500">Days</div>
-                                    </div>
+                            <div class="progress-container">
+                                <div class="progress-bar" style="width: 78%"></div>
+                            </div>
+                            <div class="project-footer">
+                                <div class="project-goal">Goal: <span>$750,000</span></div>
+                                <button class="select-project-btn">Select & Donate</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 5 -->
+                    <div class="project-card glass-card rounded-2xl overflow-hidden" data-project="arts">
+                        <div class="project-image">
+                            <img src="https://images.unsplash.com/photo-1567942712661-82b9b407abbf?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Arts Center" class="transition-transform duration-500 hover:scale-105">
+                            <div class="project-overlay">
+                                <div class="project-category">Arts & Culture</div>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">Performing Arts Center</h3>
+                            <p class="project-description">Create a vibrant space for artistic expression with modern facilities for theater, music, and visual arts programs.</p>
+                            <div class="project-stats">
+                                <div class="project-stat">
+                                    <div class="stat-value">35%</div>
+                                    <div class="stat-label">Funded</div>
                                 </div>
-                                <div class="progress-container h-1 bg-gray-200 rounded-full mt-1">
-                                    <div class="progress-bar bg-gradient-to-r from-indigo-600 to-purple-600 h-full rounded-full" style="width: 56%"></div>
+                                <div class="project-stat">
+                                    <div class="stat-value">$875K</div>
+                                    <div class="stat-label">Raised</div>
                                 </div>
-                                <div class="project-footer flex justify-between items-center mt-1">
-                                    <div class="project-goal text-xs text-gray-500">Goal: <span class="font-bold text-gray-900">$750,000</span></div>
-                                    <button class="select-project-btn bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-2 py-1 rounded-full text-xs font-semibold hover:shadow-lg transition-all duration-300" data-project="sustainability">Select & Donate</button>
+                                <div class="project-stat">
+                                    <div class="stat-value">90</div>
+                                    <div class="stat-label">Days</div>
                                 </div>
+                            </div>
+                            <div class="progress-container">
+                                <div class="progress-bar" style="width: 35%"></div>
+                            </div>
+                            <div class="project-footer">
+                                <div class="project-goal">Goal: <span>$2,500,000</span></div>
+                                <button class="select-project-btn">Select & Donate</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 6 -->
+                    <div class="project-card glass-card rounded-2xl overflow-hidden" data-project="sustainability">
+                        <div class="project-image">
+                            <img src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Sustainability Initiative" class="transition-transform duration-500 hover:scale-105">
+                            <div class="project-overlay">
+                                <div class="project-category">Sustainability</div>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">Campus Green Initiative</h3>
+                            <p class="project-description">Fund solar panel installations, waste reduction programs, and sustainable infrastructure across campus.</p>
+                            <div class="project-stats">
+                                <div class="project-stat">
+                                    <div class="stat-value">56%</div>
+                                    <div class="stat-label">Funded</div>
+                                </div>
+                                <div class="project-stat">
+                                    <div class="stat-value">$420K</div>
+                                    <div class="stat-label">Raised</div>
+                                </div>
+                                <div class="project-stat">
+                                    <div class="stat-value">30</div>
+                                    <div class="stat-label">Days</div>
+                                </div>
+                            </div>
+                            <div class="progress-container">
+                                <div class="progress-bar" style="width: 56%"></div>
+                            </div>
+                            <div class="project-footer">
+                                <div class="project-goal">Goal: <span>$750,000</span></div>
+                                <button class="select-project-btn">Select & Donate</button>
                             </div>
                         </div>
                     </div>
@@ -802,78 +826,76 @@
             </section>
 
             <!-- Urgent Projects Section -->
-            <section class="urgent-projects glass-card rounded-2xl p-4 animate-fadeInUp delay-200">
-                <div class="container">
-                    <div class="urgent-header text-center">
-                        <h2 class="text-3xl font-bold text-white">Urgent Funding Needs</h2>
-                        <p class="text-white/80 text-base mt-2">These critical initiatives need immediate support to continue their important work</p>
+            <section class="urgent-projects glass-card animate-fadeInUp delay-200">
+                <div class="urgent-header">
+                    <h2 class="text-3xl font-bold text-white">Urgent Funding Needs</h2>
+                    <p class="text-white/80 text-base mt-2">These critical initiatives need immediate support to continue their important work</p>
+                </div>
+                <div class="urgent-grid">
+                    <!-- Urgent Project 1 -->
+                    <div class="urgent-card glass-card rounded-xl" data-project="emergency">
+                        <div class="urgent-tag">Emergency Fund</div>
+                        <h3 class="urgent-title">Student Emergency Support</h3>
+                        <p class="urgent-description">Provide immediate assistance to students facing unforeseen financial crises that threaten their education.</p>
+                        <div class="urgent-stats">
+                            <div class="urgent-stat">
+                                <div class="urgent-stat-value">$42,310</div>
+                                <div class="urgent-stat-label">Raised</div>
+                            </div>
+                            <div class="urgent-stat">
+                                <div class="urgent-stat-value">7 days</div>
+                                <div class="urgent-stat-label">Left</div>
+                            </div>
+                            <div class="urgent-stat">
+                                <div class="urgent-stat-value">47%</div>
+                                <div class="urgent-stat-label">Funded</div>
+                            </div>
+                        </div>
+                        <button class="urgent-btn">Support Urgently</button>
                     </div>
-                    <div class="urgent-grid">
-                        <!-- Urgent Project 1 -->
-                        <div class="urgent-card glass-card p-3 rounded-xl">
-                            <div class="urgent-tag bg-gradient-to-r from-amber-500 to-orange-600 text-white px-1.5 py-0.5 rounded-full text-xs font-semibold">Emergency Fund</div>
-                            <h3 class="urgent-title text-base font-bold text-white mt-1">Student Emergency Support</h3>
-                            <p class="urgent-description text-white/80 mt-1 text-xs">Provide immediate assistance to students facing unforeseen financial crises that threaten their education.</p>
-                            <div class="urgent-stats flex justify-between mt-1">
-                                <div class="urgent-stat text-center">
-                                    <div class="urgent-stat-value text-sm font-bold text-amber-400">$42,310</div>
-                                    <div class="urgent-stat-label text-xs text-white/70">Raised</div>
-                                </div>
-                                <div class="urgent-stat text-center">
-                                    <div class="urgent-stat-value text-sm font-bold text-amber-400">7 days</div>
-                                    <div class="urgent-stat-label text-xs text-white/70">Left</div>
-                                </div>
-                                <div class="urgent-stat text-center">
-                                    <div class="urgent-stat-value text-sm font-bold text-amber-400">47%</div>
-                                    <div class="urgent-stat-label text-xs text-white/70">Funded</div>
-                                </div>
-                            </div>
-                            <button class="urgent-btn bg-gradient-to-r from-amber-500 to-orange-600 text-white px-2 py-1 rounded-lg text-xs font-semibold mt-1 hover:shadow-lg transition-all duration-300" data-project="emergency">Support Urgently</button>
-                        </div>
 
-                        <!-- Urgent Project 2 -->
-                        <div class="urgent-card glass-card p-3 rounded-xl">
-                            <div class="urgent-tag bg-gradient-to-r from-amber-500 to-orange-600 text-white px-1.5 py-0.5 rounded-full text-xs font-semibold">Research</div>
-                            <h3 class="urgent-title text-base font-bold text-white mt-1">Medical Research Grant</h3>
-                            <p class="urgent-description text-white/80 mt-1 text-xs">Fund critical research on neurodegenerative diseases that requires immediate resources to continue.</p>
-                            <div class="urgent-stats flex justify-between mt-1">
-                                <div class="urgent-stat text-center">
-                                    <div class="urgent-stat-value text-sm font-bold text-amber-400">$210,500</div>
-                                    <div class="urgent-stat-label text-xs text-white/70">Raised</div>
-                                </div>
-                                <div class="urgent-stat text-center">
-                                    <div class="urgent-stat-value text-sm font-bold text-amber-400">19 days</div>
-                                    <div class="urgent-stat-label text-xs text-white/70">Left</div>
-                                </div>
-                                <div class="urgent-stat text-center">
-                                    <div class="urgent-stat-value text-sm font-bold text-amber-400">63%</div>
-                                    <div class="urgent-stat-label text-xs text-white/70">Funded</div>
-                                </div>
+                    <!-- Urgent Project 2 -->
+                    <div class="urgent-card glass-card rounded-xl" data-project="medical-research">
+                        <div class="urgent-tag">Research</div>
+                        <h3 class="urgent-title">Medical Research Grant</h3>
+                        <p class="urgent-description">Fund critical research on neurodegenerative diseases that requires immediate resources to continue.</p>
+                        <div class="urgent-stats">
+                            <div class="urgent-stat">
+                                <div class="urgent-stat-value">$210,500</div>
+                                <div class="urgent-stat-label">Raised</div>
                             </div>
-                            <button class="urgent-btn bg-gradient-to-r from-amber-500 to-orange-600 text-white px-2 py-1 rounded-lg text-xs font-semibold mt-1 hover:shadow-lg transition-all duration-300" data-project="medical-research">Support Urgently</button>
+                            <div class="urgent-stat">
+                                <div class="urgent-stat-value">19 days</div>
+                                <div class="urgent-stat-label">Left</div>
+                            </div>
+                            <div class="urgent-stat">
+                                <div class="urgent-stat-value">63%</div>
+                                <div class="urgent-stat-label">Funded</div>
+                            </div>
                         </div>
+                        <button class="urgent-btn">Support Urgently</button>
+                    </div>
 
-                        <!-- Urgent Project 3 -->
-                        <div class="urgent-card glass-card p-3 rounded-xl">
-                            <div class="urgent-tag bg-gradient-to-r from-amber-500 to-orange-600 text-white px-1.5 py-0.5 rounded-full text-xs font-semibold">Disaster Relief</div>
-                            <h3 class="urgent-title text-base font-bold text-white mt-1">Campus Recovery Fund</h3>
-                            <p class="urgent-description text-white/80 mt-1 text-xs">Repair damage from recent severe weather events and ensure student safety and continuity of education.</p>
-                            <div class="urgent-stats flex justify-between mt-1">
-                                <div class="urgent-stat text-center">
-                                    <div class="urgent-stat-value text-sm font-bold text-amber-400">$105,250</div>
-                                    <div class="urgent-stat-label text-xs text-white/70">Raised</div>
-                                </div>
-                                <div class="urgent-stat text-center">
-                                    <div class="urgent-stat-value text-sm font-bold text-amber-400">23 days</div>
-                                    <div class="urgent-stat-label text-xs text-white/70">Left</div>
-                                </div>
-                                <div class="urgent-stat text-center">
-                                    <div class="urgent-stat-value text-sm font-bold text-amber-400">28%</div>
-                                    <div class="urgent-stat-label text-xs text-white/70">Funded</div>
-                                </div>
+                    <!-- Urgent Project 3 -->
+                    <div class="urgent-card glass-card rounded-xl" data-project="campus-recovery">
+                        <div class="urgent-tag">Disaster Relief</div>
+                        <h3 class="urgent-title">Campus Recovery Fund</h3>
+                        <p class="urgent-description">Repair damage from recent severe weather events and ensure student safety and continuity of education.</p>
+                        <div class="urgent-stats">
+                            <div class="urgent-stat">
+                                <div class="urgent-stat-value">$105,250</div>
+                                <div class="urgent-stat-label">Raised</div>
                             </div>
-                            <button class="urgent-btn bg-gradient-to-r from-amber-500 to-orange-600 text-white px-2 py-1 rounded-lg text-xs font-semibold mt-1 hover:shadow-lg transition-all duration-300" data-project="campus-recovery">Support Urgently</button>
+                            <div class="urgent-stat">
+                                <div class="urgent-stat-value">23 days</div>
+                                <div class="urgent-stat-label">Left</div>
+                            </div>
+                            <div class="urgent-stat">
+                                <div class="urgent-stat-value">28%</div>
+                                <div class="urgent-stat-label">Funded</div>
+                            </div>
                         </div>
+                        <button class="urgent-btn">Support Urgently</button>
                     </div>
                 </div>
             </section>
@@ -898,24 +920,17 @@
                 library: { name: "Library Modernization Project", description: "Transform our main library into a state-of-the-art learning hub", goal: 1500000, raised: 630000, progress: 42 },
                 athletics: { name: "Athletics Excellence Program", description: "Enhance sports facilities and support student-athletes", goal: 750000, raised: 585000, progress: 78 },
                 arts: { name: "Performing Arts Center", description: "Create a vibrant space for artistic expression", goal: 2500000, raised: 875000, progress: 35 },
-                sustainability: { name: "Campus Green Initiative", description: "Fund solar panels and sustainable infrastructure", goal: 750000, raised: 420000, progress: 56 }
+                sustainability: { name: "Campus Green Initiative", description: "Fund solar panels and sustainable infrastructure", goal: 750000, raised: 420000, progress: 56 },
+                emergency: { name: "Student Emergency Support", description: "Provide immediate assistance to students facing financial crises", goal: 90000, raised: 42310, progress: 47 },
+                'medical-research': { name: "Medical Research Grant", description: "Fund critical research on neurodegenerative diseases", goal: 334920, raised: 210500, progress: 63 },
+                'campus-recovery': { name: "Campus Recovery Fund", description: "Repair damage from recent severe weather events", goal: 375892, raised: 105250, progress: 28 }
             };
 
             // Handle project selection
             document.querySelectorAll('.select-project-btn, .urgent-btn').forEach(button => {
                 button.addEventListener('click', function() {
                     const projectCard = this.closest('.project-card, .urgent-card');
-                    let projectId = projectCard ? projectCard.getAttribute('data-project') : 'general';
-                    
-                    if (!projectId) {
-                        const titleElement = projectCard.querySelector('.urgent-title');
-                        if (titleElement) {
-                            projectId = titleElement.textContent.toLowerCase().replace(/\s+/g, '-');
-                        } else {
-                            projectId = 'emergency';
-                        }
-                    }
-                    
+                    const projectId = projectCard.getAttribute('data-project') || 'emergency';
                     sessionStorage.setItem('selectedProject', projectId);
                     window.location.href = 'alumni_donation_page.html';
                 });
