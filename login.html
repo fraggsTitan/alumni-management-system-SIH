@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login Portal</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+    }
+    .form-container {
+      animation: fadeIn 0.8s ease-in-out;
+    }
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    .btn-primary {
+      background-color: #D6A14A;
+      transition: background-color 0.3s ease;
+    }
+    .btn-primary:hover {
+      background-color: #C09040;
+    }
+     .btn-secondary {
+      border-color: #D6A14A;
+      color: #D6A14A;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+    .btn-secondary:hover {
+      background-color: #D6A14A;
+      color: white;
+    }
+    .input-icon {
+        color: #D6A14A;
+    }
+    .focus\:border-custom-gold:focus {
+        border-color: #D6A14A;
+    }
+    .password-strength-bar {
+      height: 100%;
+      width: 0%;
+      transition: width 0.4s ease, background-color 0.4s ease;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body class="bg-gray-900">
+
+  <!-- Fixed Background -->
+  <div class="fixed inset-0 w-full h-full">
+    <!-- Background Image & Overlay -->
+    <div class="absolute inset-0 w-full h-full bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1593941707874-ef25b8b4a92b?q=80&w=2072&auto=format&fit=crop');"></div>
+    <div class="absolute inset-0 w-full h-full bg-black opacity-60"></div>
+  </div>
+
+  <!-- Form Container -->
+  <div class="min-h-screen flex items-center justify-center py-12 px-6 relative">
+      <div class="w-full max-w-md">
+          <!-- Login Form -->
+          <div id="loginContainer" class="form-container">
+              <div class="bg-white p-8 md:p-12 rounded-2xl shadow-2xl">
+                  <h2 class="text-3xl font-bold text-gray-800 mb-4 text-center">Login</h2>
+                  <p class="text-gray-500 mb-8 text-center">Welcome back! Please enter your details.</p>
+
+                  <form id="loginForm">
+                      <div class="mb-5">
+                          <label for="username" class="block text-gray-700 font-semibold mb-2">Username</label>
+                          <div class="relative">
+                              <input type="text" id="username" placeholder="Enter email or username" class="w-full px-4 py-3 pr-10 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:border-custom-gold" required>
+                              <span class="absolute top-1/2 right-3 -translate-y-1/2 input-icon">
+                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                  <path stroke-linecap="round" stroke-linejoin="round" d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207" />
+                                 </svg>
+                              </span>
+                          </div>
+                      </div>
+
+                      <div class="mb-6">
+                          <div class="flex justify-between items-center mb-2">
+                              <label for="password" class="text-gray-700 font-semibold">Password</label>
+                              <a href="#" class="text-sm text-amber-600 hover:underline">Forgot password?</a>
+                          </div>
+                          <div class="relative">
+                              <input type="password" id="password" placeholder="Enter your password" class="w-full px-4 py-3 pr-10 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:border-custom-gold" required>
+                               <span class="absolute top-1/2 right-3 -translate-y-1/2 input-icon">
+                                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                   <path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                                  </svg>
+                              </span>
+                          </div>
+                      </div>
+
+                      <button type="submit" id="loginBtn" class="w-full btn-primary text-white font-bold py-3 px-4 rounded-lg focus:outline-none focus:shadow-outline">
+                          Login
+                      </button>
+
+                       <div class="flex items-center my-6">
+                          <hr class="flex-grow border-t border-gray-300">
+                          <span class="mx-4 text-gray-400 text-sm">OR</span>
+                          <hr class="flex-grow border-t border-gray-300">
+                      </div>
+
+                      <button type="button" class="w-full btn-secondary font-bold py-3 px-4 rounded-lg border-2 focus:outline-none focus:shadow-outline">
+                          Login with OTP
+                      </button>
+                  </form>
+                  <p class="text-sm text-gray-600 text-center mt-6">Don't have an account? <span onclick="toggleForms()" class="font-semibold text-amber-600 hover:underline cursor-pointer">Sign up</span></p>
+              </div>
+          </div>
+
+          <!-- Signup Form -->
+          <div id="signupContainer" class="form-container hidden">
+               <div class="bg-white p-8 md:p-12 rounded-2xl shadow-2xl">
+                  <h2 class="text-3xl font-bold text-gray-800 mb-4 text-center">Create Account</h2>
+                  <p class="text-gray-500 mb-8 text-center">Join us! Please fill in your details.</p>
+
+                  <form id="signupForm">
+                      <div class="grid grid-cols-1 gap-5">
+                          <input type="text" placeholder="Full Name" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:border-custom-gold" required>
+                          <input type="email" placeholder="Email Address" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:border-custom-gold" required>
+                           <div>
+                              <input type="password" id="signupPassword" placeholder="Create Password" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:border-custom-gold" oninput="checkStrength(this.value)" required>
+                              <div class="h-2 w-full bg-gray-200 rounded-full mt-2 overflow-hidden">
+                                  <div id="strengthBar" class="password-strength-bar"></div>
+                              </div>
+                          </div>
+                          <select class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:border-custom-gold text-gray-500" required>
+                              <option value="" disabled selected>Select Department</option>
+                              <option>CSE</option>
+                              <option>ECE</option>
+                              <option>EEE</option>
+                              <option>MECH</option>
+                              <option>CIVIL</option>
+                          </select>
+                          <input type="number" min="2000" max="2035" placeholder="Year of Graduation" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:border-custom-gold" required>
+                          <div>
+                              <label for="certificate" class="w-full text-center block btn-secondary font-bold py-3 px-4 rounded-lg border-2 cursor-pointer">
+                                  Upload Certificate
+                              </label>
+                              <input type="file" id="certificate" class="hidden" onchange="updateFileName()">
+                              <p id="fileName" class="text-xs text-center text-gray-500 mt-2">No file chosen</p>
+                          </div>
+                      </div>
+
+                      <button type="submit" id="signupBtn" class="w-full btn-primary text-white font-bold py-3 px-4 rounded-lg mt-6 focus:outline-none focus:shadow-outline">
+                          Sign Up
+                      </button>
+                  </form>
+                  <p class="text-sm text-gray-600 text-center mt-6">Already have an account? <span onclick="toggleForms()" class="font-semibold text-amber-600 hover:underline cursor-pointer">Login</span></p>
+              </div>
+          </div>
+      </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div id="toast" class="fixed bottom-5 right-5 bg-green-500 text-white py-3 px-6 rounded-lg shadow-lg opacity-0 transform translate-y-5 transition-all duration-300">
+    This is a toast!
+  </div>
+
+  <script>
+    const loginContainer = document.getElementById('loginContainer');
+    const signupContainer = document.getElementById('signupContainer');
+    const loginForm = document.getElementById('loginForm');
+    const signupForm = document.getElementById('signupForm');
+    const loginBtn = document.getElementById('loginBtn');
+    const signupBtn = document.getElementById('signupBtn');
+    const toast = document.getElementById('toast');
+
+    function toggleForms() {
+        loginContainer.classList.toggle('hidden');
+        signupContainer.classList.toggle('hidden');
+    }
+
+    function showToast(message, success = true) {
+        toast.textContent = message;
+        toast.className = `fixed bottom-5 right-5 text-white py-3 px-6 rounded-lg shadow-lg transition-all duration-300 ${success ? 'bg-green-500' : 'bg-red-500'}`;
+        toast.classList.remove('opacity-0', 'translate-y-5');
+        toast.classList.add('opacity-100', 'translate-y-0');
+
+        setTimeout(() => {
+            toast.classList.remove('opacity-100', 'translate-y-0');
+            toast.classList.add('opacity-0', 'translate-y-5');
+        }, 3000);
+    }
+
+    function setButtonLoading(button, isLoading, originalText) {
+        if (isLoading) {
+            button.disabled = true;
+            button.innerHTML = `
+                <svg class="animate-spin h-5 w-5 text-white mx-auto" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                  <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                  <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                </svg>`;
+        } else {
+            button.disabled = false;
+            button.innerHTML = originalText;
+        }
+    }
+    
+    function checkStrength(password) {
+      const bar = document.getElementById("strengthBar");
+      let strength = 0;
+      if (password.length > 5) strength += 25;
+      if (/[A-Z]/.test(password)) strength += 25;
+      if (/[0-9]/.test(password)) strength += 25;
+      if (/[@$!%*?&]/.test(password)) strength += 25;
+
+      bar.style.width = strength + "%";
+      if (strength <= 25) bar.style.backgroundColor = "#ef4444"; // red-500
+      else if (strength <= 50) bar.style.backgroundColor = "#f97316"; // orange-500
+      else if (strength <= 75) bar.style.backgroundColor = "#3b82f6"; // blue-500
+      else bar.style.backgroundColor = "#22c55e"; // green-500
+    }
+
+    function updateFileName() {
+      const fileInput = document.getElementById("certificate");
+      const fileName = document.getElementById("fileName");
+      fileName.textContent = fileInput.files.length ? fileInput.files[0].name : "No file chosen";
+    }
+
+    loginForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      setButtonLoading(loginBtn, true, 'Login');
+      setTimeout(() => {
+        setButtonLoading(loginBtn, false, 'Login');
+        showToast("Login successful!");
+      }, 1500);
+    });
+    
+    signupForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      setButtonLoading(signupBtn, true, 'Sign Up');
+      setTimeout(() => {
+        setButtonLoading(signupBtn, false, 'Sign Up');
+        showToast("Signup successful! Please log in.");
+        toggleForms();
+      }, 1500);
+    });
+  </script>
+
+</body>
+</html>
+
+
