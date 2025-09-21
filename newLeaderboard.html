@@ -13,6 +13,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     
+    <!-- Font Awesome for icons in topbar -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
 
@@ -117,7 +120,7 @@
             outline: none;
             font-size: 0.95rem;
             background: transparent;
-            margin-right: 12px;
+            margin-left: 12px;
             width: 100%;
             color: #374151;
         }
@@ -288,12 +291,13 @@
             <div class="logo">AlumniSys</div>
             <nav>
                 <ul>
-                    <li class="active"><i data-lucide="home" class="w-5 h-5"></i> Dashboard</li>
+                    <li><i data-lucide="home" class="w-5 h-5"></i> Dashboard</li>
                     <li><i data-lucide="users" class="w-5 h-5"></i> Friends</li>
                     <li><i data-lucide="calendar" class="w-5 h-5"></i> Events</li>
                     <li><i data-lucide="mail" class="w-5 h-5"></i> Messages</li>
                     <li><i data-lucide="settings" class="w-5 h-5"></i> Settings</li>
                     <li><i data-lucide="log-out" class="w-5 h-5"></i> Logout</li>
+                    <li class="active"><i data-lucide="trophy" class="w-5 h-5"></i> Leaderboard</li>
                 </ul>
             </nav>
         </aside>
@@ -301,15 +305,15 @@
         <main class="main-content">
             <header class="topbar">
                 <div class="search-bar">
-                    <input type="text" placeholder="Search alumni..." id="searchInput">
                     <i class="fa fa-search"></i>
+                    <input type="text" placeholder="Search alumni..." id="searchInput">
                 </div>
                 <div class="topbar-right">
-                    <div class="notification-bell">
+                    <div class="notification-bell" onclick="showNotifications()">
                         <i class="fa fa-bell"></i>
                         <div class="notification-badge">3</div>
                     </div>
-                    <div class="profile">
+                    <div class="profile" onclick="showProfile()">
                         <div class="profile-avatar">
                             <i class="fa fa-user-tie"></i>
                         </div>
@@ -452,6 +456,14 @@
     </div>
 
     <script>
+        // Simple toast function for notifications
+        function showNotifications() {
+            alert('Notifications: 3 new messages from alumni events!');
+        }
+        function showProfile() {
+            alert('Profile settings opened.');
+        }
+
         document.addEventListener('DOMContentLoaded', () => {
             try {
                 lucide.createIcons();
