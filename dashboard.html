@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alumni Data Management Dashboard</title>
+  <link rel="stylesheet" href="styles/dashboard.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <div class="container">
+    <aside class="sidebar">
+      <div class="logo">AlumniSys</div>
+      <nav>
+        <ul>
+          <li class="active"><i class="fa fa-home"></i> Dashboard</li>
+          <li><i class="fa fa-users"></i> Alumni</li>
+          <li><i class="fa fa-calendar"></i> Events</li>
+          <li><i class="fa fa-envelope"></i> Messages</li>
+          <li><i class="fa fa-cog"></i> Settings</li>
+          <li><i class="fa fa-sign-out-alt"></i> Logout</li>
+        </ul>
+      </nav>
+    </aside>
+    <main class="main-content">
+      <header class="topbar">
+        <div class="search-bar">
+          <input type="text" placeholder="Search alumni...">
+          <i class="fa fa-search"></i>
+        </div>
+        <div class="topbar-right">
+          <i class="fa fa-bell"></i>
+          <div class="profile">
+            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="User">
+            <span>Admin</span>
+          </div>
+        </div>
+      </header>
+      <section class="dashboard-cards">
+        <div class="card">
+          <i class="fa fa-users"></i>
+          <div>
+            <h3>1,245</h3>
+            <p>Total Alumni</p>
+          </div>
+        </div>
+        <div class="card">
+          <i class="fa fa-user-plus"></i>
+          <div>
+            <h3>12</h3>
+            <p>New Registrations</p>
+          </div>
+        </div>
+        <div class="card">
+          <i class="fa fa-calendar"></i>
+          <div>
+            <h3>3</h3>
+            <p>Upcoming Events</p>
+          </div>
+        </div>
+        <div class="card">
+          <i class="fa fa-envelope"></i>
+          <div>
+            <h3>5</h3>
+            <p>Messages</p>
+          </div>
+        </div>
+      </section>
+      <section class="alumni-table-section">
+        <h2>Alumni List</h2>
+        <div class="table-wrapper">
+          <table class="alumni-table">
+            <thead>
+              <tr>
+                <th>Photo</th>
+                <th>Name</th>
+                <th>Batch</th>
+                <th>Email</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Alumni"></td>
+                <td>Priya Sharma</td>
+                <td>2018</td>
+                <td>priya.s@example.com</td>
+                <td>
+                  <button class="view">View</button>
+                  <button class="message">Message</button>
+                </td>
+              </tr>
+              <tr>
+                <td><img src="https://randomuser.me/api/portraits/men/45.jpg" alt="Alumni"></td>
+                <td>Rahul Verma</td>
+                <td>2017</td>
+                <td>rahul.v@example.com</td>
+                <td>
+                  <button class="view">View</button>
+                  <button class="message">Message</button>
+                </td>
+              </tr>
+              <tr>
+                <td><img src="https://randomuser.me/api/portraits/women/46.jpg" alt="Alumni"></td>
+                <td>Neha Singh</td>
+                <td>2019</td>
+                <td>neha.s@example.com</td>
+                <td>
+                  <button class="view">View</button>
+                  <button class="message">Message</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+      <section class="recent-activity">
+        <h2>Recent Activity</h2>
+        <ul>
+          <li><span class="activity-icon"><i class="fa fa-user-plus"></i></span> New alumni registered: <b>Priya Sharma</b></li>
+          <li><span class="activity-icon"><i class="fa fa-calendar"></i></span> Event added: <b>Annual Meetup 2025</b></li>
+          <li><span class="activity-icon"><i class="fa fa-envelope"></i></span> Message sent to <b>Rahul Verma</b></li>
+        </ul>
+      </section>
+    </main>
+  </div>
+</body>
+</html>
