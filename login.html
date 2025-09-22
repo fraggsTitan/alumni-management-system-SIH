@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Login Portal</title>
+  <title>Alumni Portal - Login</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -11,6 +11,12 @@
   <style>
     body {
       font-family: 'Inter', sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    }
+    .form-wrapper {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
     }
     .form-container {
       animation: fadeIn 0.8s ease-in-out;
@@ -26,26 +32,28 @@
       }
     }
     .btn-primary {
-      background-color: #D6A14A;
-      transition: background-color 0.3s ease;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
     }
     .btn-primary:hover {
-      background-color: #C09040;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
     }
-     .btn-secondary {
-      border-color: #D6A14A;
-      color: #D6A14A;
+    .btn-secondary {
+      border-color: #764ba2;
+      color: #764ba2;
       transition: background-color 0.3s ease, color 0.3s ease;
     }
     .btn-secondary:hover {
-      background-color: #D6A14A;
-      color: white;
+      background-color: rgba(118, 75, 162, 0.1);
     }
     .input-icon {
-        color: #D6A14A;
+        color: #764ba2;
     }
-    .focus\:border-custom-gold:focus {
-        border-color: #D6A14A;
+    .form-input:focus {
+        border-color: #667eea;
+        box-shadow: 0 0 0 2px rgba(102, 126, 234, 0.2);
     }
     .password-strength-bar {
       height: 100%;
@@ -53,31 +61,29 @@
       transition: width 0.4s ease, background-color 0.4s ease;
       border-radius: 5px;
     }
+    /* Modal styles */
+    .modal-overlay {
+        transition: opacity 0.3s ease;
+    }
+    .modal-content {
+        transition: transform 0.3s ease, opacity 0.3s ease;
+    }
   </style>
 </head>
-<body class="bg-gray-900">
+<body>
 
-  <!-- Fixed Background -->
-  <div class="fixed inset-0 w-full h-full">
-    <!-- Background Image & Overlay -->
-    <div class="absolute inset-0 w-full h-full bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1593941707874-ef25b8b4a92b?q=80&w=2072&auto=format&fit=crop');"></div>
-    <div class="absolute inset-0 w-full h-full bg-black opacity-60"></div>
-  </div>
-
-  <!-- Form Container -->
-  <div class="min-h-screen flex items-center justify-center py-12 px-6 relative">
+  <div class="min-h-screen flex items-center justify-center py-12 px-6">
       <div class="w-full max-w-md">
-          <!-- Login Form -->
           <div id="loginContainer" class="form-container">
-              <div class="bg-white p-8 md:p-12 rounded-2xl shadow-2xl">
-                  <h2 class="text-3xl font-bold text-gray-800 mb-4 text-center">Login</h2>
+              <div class="form-wrapper p-8 md:p-12 rounded-2xl shadow-2xl">
+                  <h2 class="text-3xl font-bold text-gray-800 mb-4 text-center">Alumni Login</h2>
                   <p class="text-gray-500 mb-8 text-center">Welcome back! Please enter your details.</p>
 
                   <form id="loginForm">
                       <div class="mb-5">
                           <label for="username" class="block text-gray-700 font-semibold mb-2">Username</label>
                           <div class="relative">
-                              <input type="text" id="username" placeholder="Enter email or username" class="w-full px-4 py-3 pr-10 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:border-custom-gold" required>
+                              <input type="text" id="username" placeholder="Enter email or username" class="form-input w-full px-4 py-3 pr-10 border border-gray-300 rounded-lg focus:outline-none" required>
                               <span class="absolute top-1/2 right-3 -translate-y-1/2 input-icon">
                                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                                   <path stroke-linecap="round" stroke-linejoin="round" d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207" />
@@ -89,10 +95,10 @@
                       <div class="mb-6">
                           <div class="flex justify-between items-center mb-2">
                               <label for="password" class="text-gray-700 font-semibold">Password</label>
-                              <a href="#" class="text-sm text-amber-600 hover:underline">Forgot password?</a>
+                              <a href="#" class="text-sm text-indigo-600 hover:underline">Forgot password?</a>
                           </div>
                           <div class="relative">
-                              <input type="password" id="password" placeholder="Enter your password" class="w-full px-4 py-3 pr-10 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:border-custom-gold" required>
+                              <input type="password" id="password" placeholder="Enter your password" class="form-input w-full px-4 py-3 pr-10 border border-gray-300 rounded-lg focus:outline-none" required>
                                <span class="absolute top-1/2 right-3 -translate-y-1/2 input-icon">
                                   <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
@@ -111,31 +117,30 @@
                           <hr class="flex-grow border-t border-gray-300">
                       </div>
 
-                      <button type="button" class="w-full btn-secondary font-bold py-3 px-4 rounded-lg border-2 focus:outline-none focus:shadow-outline">
+                      <button type="button" id="openOtpModalBtn" class="w-full btn-secondary font-bold py-3 px-4 rounded-lg border-2 focus:outline-none focus:shadow-outline">
                           Login with OTP
                       </button>
                   </form>
-                  <p class="text-sm text-gray-600 text-center mt-6">Don't have an account? <span onclick="toggleForms()" class="font-semibold text-amber-600 hover:underline cursor-pointer">Sign up</span></p>
+                  <p class="text-sm text-gray-600 text-center mt-6">Don't have an account? <span onclick="toggleForms()" class="font-semibold text-indigo-600 hover:underline cursor-pointer">Sign up</span></p>
               </div>
           </div>
 
-          <!-- Signup Form -->
           <div id="signupContainer" class="form-container hidden">
-               <div class="bg-white p-8 md:p-12 rounded-2xl shadow-2xl">
+               <div class="form-wrapper p-8 md:p-12 rounded-2xl shadow-2xl">
                   <h2 class="text-3xl font-bold text-gray-800 mb-4 text-center">Create Account</h2>
                   <p class="text-gray-500 mb-8 text-center">Join us! Please fill in your details.</p>
 
                   <form id="signupForm">
                       <div class="grid grid-cols-1 gap-5">
-                          <input type="text" placeholder="Full Name" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:border-custom-gold" required>
-                          <input type="email" placeholder="Email Address" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:border-custom-gold" required>
+                          <input type="text" placeholder="Full Name" class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none" required>
+                          <input type="email" placeholder="Email Address" class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none" required>
                            <div>
-                              <input type="password" id="signupPassword" placeholder="Create Password" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:border-custom-gold" oninput="checkStrength(this.value)" required>
+                              <input type="password" id="signupPassword" placeholder="Create Password" class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none" oninput="checkStrength(this.value)" required>
                               <div class="h-2 w-full bg-gray-200 rounded-full mt-2 overflow-hidden">
                                   <div id="strengthBar" class="password-strength-bar"></div>
                               </div>
                           </div>
-                          <select class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:border-custom-gold text-gray-500" required>
+                          <select class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none text-gray-500" required>
                               <option value="" disabled selected>Select Department</option>
                               <option>CSE</option>
                               <option>ECE</option>
@@ -143,7 +148,7 @@
                               <option>MECH</option>
                               <option>CIVIL</option>
                           </select>
-                          <input type="number" min="2000" max="2035" placeholder="Year of Graduation" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:border-custom-gold" required>
+                          <input type="number" min="2000" max="2035" placeholder="Year of Graduation" class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none" required>
                           <div>
                               <label for="certificate" class="w-full text-center block btn-secondary font-bold py-3 px-4 rounded-lg border-2 cursor-pointer">
                                   Upload Certificate
@@ -157,13 +162,33 @@
                           Sign Up
                       </button>
                   </form>
-                  <p class="text-sm text-gray-600 text-center mt-6">Already have an account? <span onclick="toggleForms()" class="font-semibold text-amber-600 hover:underline cursor-pointer">Login</span></p>
+                  <p class="text-sm text-gray-600 text-center mt-6">Already have an account? <span onclick="toggleForms()" class="font-semibold text-indigo-600 hover:underline cursor-pointer">Login</span></p>
               </div>
           </div>
       </div>
   </div>
 
-  <!-- Toast Notification -->
+  <div id="otpModal" class="fixed inset-0 z-50 flex items-center justify-center hidden">
+        <div id="otpOverlay" class="absolute inset-0 bg-black modal-overlay opacity-0"></div>
+        
+        <div id="otpContent" class="modal-content form-wrapper w-full max-w-sm p-8 rounded-2xl shadow-2xl relative transform scale-95 opacity-0">
+            <button id="closeOtpModalBtn" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600">
+                <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
+            </button>
+            <h2 class="text-2xl font-bold text-gray-800 mb-4 text-center">Login with OTP</h2>
+            <p class="text-gray-500 mb-6 text-center text-sm">Enter your registered email to receive a One-Time Password.</p>
+            <form>
+                <div class="mb-4">
+                    <label for="otpEmail" class="block text-gray-700 font-semibold mb-2 text-sm">Email Address</label>
+                    <input type="email" id="otpEmail" placeholder="you@example.com" class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none" required>
+                </div>
+                <button type="submit" class="w-full btn-primary text-white font-bold py-3 px-4 rounded-lg">
+                    Send OTP
+                </button>
+            </form>
+        </div>
+    </div>
+
   <div id="toast" class="fixed bottom-5 right-5 bg-green-500 text-white py-3 px-6 rounded-lg shadow-lg opacity-0 transform translate-y-5 transition-all duration-300">
     This is a toast!
   </div>
@@ -176,6 +201,14 @@
     const loginBtn = document.getElementById('loginBtn');
     const signupBtn = document.getElementById('signupBtn');
     const toast = document.getElementById('toast');
+    
+    // OTP Modal elements
+    const otpModal = document.getElementById('otpModal');
+    const openOtpModalBtn = document.getElementById('openOtpModalBtn');
+    const closeOtpModalBtn = document.getElementById('closeOtpModalBtn');
+    const otpOverlay = document.getElementById('otpOverlay');
+    const otpContent = document.getElementById('otpContent');
+
 
     function toggleForms() {
         loginContainer.classList.toggle('hidden');
@@ -184,7 +217,7 @@
 
     function showToast(message, success = true) {
         toast.textContent = message;
-        toast.className = `fixed bottom-5 right-5 text-white py-3 px-6 rounded-lg shadow-lg transition-all duration-300 ${success ? 'bg-green-500' : 'bg-red-500'}`;
+        toast.className = `fixed bottom-5 right-5 text-white py-3 px-6 rounded-lg shadow-lg transition-all duration-300 ${success ? 'bg-green-600' : 'bg-red-600'}`;
         toast.classList.remove('opacity-0', 'translate-y-5');
         toast.classList.add('opacity-100', 'translate-y-0');
 
@@ -247,9 +280,31 @@
         toggleForms();
       }, 1500);
     });
+    
+    // OTP Modal Logic
+    function openOtpModal() {
+        otpModal.classList.remove('hidden');
+        setTimeout(() => {
+            otpOverlay.classList.remove('opacity-0');
+            otpOverlay.classList.add('opacity-50');
+            otpContent.classList.remove('scale-95', 'opacity-0');
+        }, 10);
+    }
+
+    function closeOtpModal() {
+        otpOverlay.classList.add('opacity-0');
+        otpOverlay.classList.remove('opacity-50');
+        otpContent.classList.add('scale-95', 'opacity-0');
+        setTimeout(() => {
+            otpModal.classList.add('hidden');
+        }, 300);
+    }
+
+    openOtpModalBtn.addEventListener('click', openOtpModal);
+    closeOtpModalBtn.addEventListener('click', closeOtpModal);
+    otpOverlay.addEventListener('click', closeOtpModal);
+
   </script>
 
 </body>
 </html>
-
-
